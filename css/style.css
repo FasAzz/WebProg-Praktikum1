@@ -136,13 +136,9 @@ body {
     gap: 30px;
 }
 
-.side-content.left { 
-    text-align: left; 
-}
-
+.side-content.left { text-align: left; }
 .side-content.right { 
     text-align: right; 
-    /* Memaksa teks kanan jadi 2 baris dengan membatasi lebar kotaknya */
     max-width: 350px; 
     justify-self: end;
 }
@@ -151,7 +147,7 @@ body {
     font-size: 3.5rem; 
     line-height: 1.1; 
     font-weight: 800; 
-    white-space: normal; /* Biar bisa turun baris (wrap) */
+    white-space: normal; 
 }
 
 .hero-png-clean {
@@ -215,7 +211,7 @@ body {
 */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 40px 30px;
     width: 100%;
     max-width: 1200px;
@@ -230,7 +226,7 @@ body {
 .project-card:hover .project-thumbnail img { transform: scale(1.05); }
 
 /* ================================================================
-8. RESPONSIVE (FOR MOBILE & TABLET)
+8. RESPONSIVE (MOBILE & TABLET)
 ================================================================
 */
 @media (max-width: 1200px) {
@@ -247,10 +243,24 @@ body {
     .nav-links { gap: 12px; flex-wrap: wrap; justify-content: center; }
     .nav-links a { font-size: 0.75rem; }
 
+    /* Fix Nama & Headline HP */
     .side-name, .side-headline {
         font-size: 2.2rem !important; 
         text-align: center;
         line-height: 1.2;
+    }
+
+    /* Fix Project Center di HP */
+    .projects-grid {
+        grid-template-columns: 1fr; /* Paksa satu kolom lurus */
+        justify-items: center; /* Biar kartu di tengah */
+        padding: 0;
+        margin: 40px auto 0 auto;
+    }
+
+    .project-card {
+        width: 100%;
+        max-width: 350px; /* Batasi lebar kartu biar gak mencong */
     }
 
     .hero-center-layout {
@@ -262,4 +272,5 @@ body {
 
     .hero-png-clean { width: 250px; }
     .content-wrapper { padding-top: 160px; }
+    .container { padding: 0 20px; }
 }
