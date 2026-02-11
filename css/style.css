@@ -91,7 +91,7 @@ body {
 }
 
 /* ================================================================
-3. CARD SYSTEM & HOVER EFFECT (LIGHTROOM STYLE)
+3. CARD SYSTEM & HOVER EFFECT
 ================================================================
 */
 .glass-card, .skill-card {
@@ -115,6 +115,7 @@ body {
 
 /* ================================================================
 4. HOME PAGE (index.html)
+Update: Fix Layout Desktop agar teks tidak balapan ke pinggir.
 ================================================================
 */
 .hero {
@@ -131,20 +132,31 @@ body {
     grid-template-columns: 1fr 450px 1fr;
     align-items: center;
     width: 100%;
-    max-width: 1600px;
-    padding: 0 60px;
+    max-width: 1400px; /* Dipersempit dikit biar teks gak terlalu ke pinggir */
+    padding: 0 40px;
     gap: 20px;
 }
 
-.side-content.left { text-align: left; }
-.side-content.right { text-align: right; }
+.side-content {
+    width: 100%;
+    max-width: 400px; /* Batas lebar teks agar turun baris */
+}
 
-/* Desktop Tetap Sejajar */
+.side-content.left { 
+    text-align: left; 
+    justify-self: start;
+}
+
+.side-content.right { 
+    text-align: right; 
+    justify-self: end;
+}
+
 .side-name, .side-headline { 
-    font-size: 3.8rem; 
-    line-height: 1; 
+    font-size: 3.2rem; /* Ukuran font lebih proporsional */
+    line-height: 1.1; 
     font-weight: 800; 
-    white-space: nowrap; 
+    white-space: normal; /* Mengizinkan wrap */
 }
 
 .hero-png-clean {
@@ -227,38 +239,24 @@ body {
 ================================================================
 */
 @media (max-width: 1200px) {
-    .hero-center-layout { grid-template-columns: 1fr; gap: 60px; padding: 0 20px; }
+    .hero-center-layout { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
+    .side-content { max-width: 100%; }
     .side-content.left, .side-content.right { text-align: center; }
-    .hero-png-clean { width: 320px; }
-    .side-name, .side-headline { font-size: 2.8rem; white-space: normal; }
+    .hero-png-clean { width: 300px; }
+    .side-name, .side-headline { font-size: 2.8rem; }
     .about-grid { flex-direction: column !important; }
 }
 
 @media (max-width: 768px) {
     .navbar { padding: 10px 0; }
-
-    .nav-flex {
-        flex-direction: column;
-        gap: 10px;
-        justify-content: center;
-    }
-
-    .nav-links {
-        gap: 12px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
+    .nav-flex { flex-direction: column; gap: 10px; }
+    .nav-links { gap: 12px; flex-wrap: wrap; justify-content: center; }
     .nav-links a { font-size: 0.75rem; }
 
-    /* Fix Nama Kepotong di HP */
     .side-name, .side-headline {
         font-size: 2.2rem !important; 
         text-align: center;
-        white-space: normal !important; /* Di HP boleh turun baris */
         line-height: 1.2;
-        display: block;
-        width: 100%;
     }
 
     .hero-center-layout {
@@ -266,12 +264,9 @@ body {
         flex-direction: column;
         align-items: center;
         gap: 25px;
-        padding: 0 15px;
     }
 
-    .hero-png-clean { width: 250px; }
-
+    .hero-png-clean { width: 240px; }
     .content-wrapper { padding-top: 160px; }
-    
     .container { padding: 0 20px; }
 }
