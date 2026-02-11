@@ -139,7 +139,13 @@ body {
 .side-content.left { text-align: left; }
 .side-content.right { text-align: right; }
 
-.side-name, .side-headline { font-size: 3.8rem; line-height: 1; font-weight: 800; white-space: nowrap; }
+/* Desktop Tetap Sejajar */
+.side-name, .side-headline { 
+    font-size: 3.8rem; 
+    line-height: 1; 
+    font-weight: 800; 
+    white-space: nowrap; 
+}
 
 .hero-png-clean {
     width: 100%;
@@ -217,7 +223,7 @@ body {
 .project-card:hover .project-thumbnail img { transform: scale(1.05); }
 
 /* ================================================================
-8. RESPONSIVE (MOBILE & TABLET FIX)
+8. RESPONSIVE (FOR MOBILE & TABLET)
 ================================================================
 */
 @media (max-width: 1200px) {
@@ -245,12 +251,14 @@ body {
 
     .nav-links a { font-size: 0.75rem; }
 
-    /* Perbaikan Teks Nama & Headline di HP */
+    /* Fix Nama Kepotong di HP */
     .side-name, .side-headline {
-        font-size: 2.2rem !important; /* Dikecilkan agar muat */
+        font-size: 2.2rem !important; 
         text-align: center;
-        white-space: normal !important; /* Agar teks turun ke bawah jika panjang */
+        white-space: normal !important; /* Di HP boleh turun baris */
         line-height: 1.2;
+        display: block;
+        width: 100%;
     }
 
     .hero-center-layout {
@@ -261,7 +269,7 @@ body {
         padding: 0 15px;
     }
 
-    .hero-png-clean { width: 260px; }
+    .hero-png-clean { width: 250px; }
 
     .content-wrapper { padding-top: 160px; }
     
