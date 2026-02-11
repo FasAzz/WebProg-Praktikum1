@@ -1,0 +1,236 @@
+/* ================================================================
+1. MASTER VARIABLES & RESET
+Bagian ini mengatur warna, font, dan dasar tampilan web.
+================================================================
+*/
+:root {
+    --bg: #0b0c10;
+    --accent: #00d4ff;
+    --text-dim: #a1a1a6;
+    --card-bg: rgba(255, 255, 255, 0.03);
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    background-color: var(--bg);
+    background-image: linear-gradient(rgba(11, 12, 16, 0.85), rgba(11, 12, 16, 0.85)), url('../images/bgbg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #00d4ff, #0055ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ================================================================
+2. GLOBAL COMPONENTS (NAVBAR & BUTTONS)
+Berlaku di semua halaman (Home, About, Projects, dll).
+================================================================
+*/
+.navbar {
+    position: fixed;
+    top: 0; 
+    width: 100%;
+    padding: 30px 0;
+    z-index: 1000;
+    background: rgba(11, 12, 16, 0.7);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { font-weight: 800; letter-spacing: 2px; font-size: 1.2rem; }
+
+.nav-links { display: flex; list-style: none; gap: 40px; }
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover, .active { color: var(--accent) !important; }
+
+.cta-btn {
+    background: var(--accent);
+    padding: 18px 35px;
+    border-radius: 15px;
+    font-weight: 800;
+    color: #000;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.cta-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+}
+
+/* ================================================================
+3. CARD SYSTEM & HOVER EFFECT (LIGHTROOM STYLE)
+Ini yang bikin kartu kamu ada border biru nyala pas di-hover.
+================================================================
+*/
+.glass-card, .skill-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    cursor: pointer;
+}
+
+.glass-card:hover, .skill-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    background: rgba(0, 212, 255, 0.03);
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+}
+
+.card-title { color: var(--accent); margin-bottom: 15px; }
+
+/* ================================================================
+4. HOME PAGE (index.html)
+Mengatur layout 3 kolom (Nama - Foto - Headline).
+================================================================
+*/
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.hero-center-layout {
+    display: grid;
+    grid-template-columns: 1fr 450px 1fr;
+    align-items: center;
+    width: 100%;
+    max-width: 1600px;
+    padding: 0 60px;
+    gap: 20px;
+}
+
+.side-content.left { text-align: left; }
+.side-content.right { text-align: right; }
+
+.side-name, .side-headline { font-size: 3.8rem; line-height: 1; font-weight: 800; }
+
+.hero-png-clean {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 50px rgba(0, 212, 255, 0.2));
+}
+
+.hero-png-clean:hover {
+    filter: drop-shadow(0 0 20px var(--accent));
+    transform: scale(1.05);
+    transition: 0.4s;
+}
+
+/* ================================================================
+5. ABOUT PAGE (about.html)
+Mengatur layout kartu yang berjejer ke samping.
+================================================================
+*/
+.content-wrapper { padding: 180px 0 100px; min-height: 100vh; }
+
+.center-content { display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+.about-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.about-grid .glass-card { flex: 1; padding: 60px 40px; text-align: left; }
+
+/* ================================================================
+6. SKILLS PAGE (skill.html)
+Mengatur ikon tools dan workflow Design Thinking.
+================================================================
+*/
+.skills-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 40px;
+}
+
+.skill-card { padding: 30px 20px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.skill-card img { width: 50px; height: 50px; }
+
+.workflow-container { display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 30px; flex-wrap: wrap; }
+.workflow-step { 
+    padding: 10px 20px; background: rgba(255, 255, 255, 0.05); border-radius: 50px; 
+    font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(0, 212, 255, 0.3); 
+}
+.workflow-arrow { color: var(--accent); font-weight: bold; }
+
+/* ================================================================
+7. PROJECTS PAGE (projects.html)
+Mengatur galeri foto yang fleksibel (nge-fit).
+================================================================
+*/
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 40px;
+}
+
+.project-card { padding: 20px !important; display: flex; flex-direction: column; height: auto; }
+
+.project-thumbnail { width: 100%; border-radius: 12px; overflow: hidden; margin-bottom: 15px; }
+.project-thumbnail img { width: 100%; height: auto; object-fit: contain; transition: transform 0.5s ease; }
+
+.project-card:hover .project-thumbnail img { transform: scale(1.05); }
+
+/* ================================================================
+8. RESPONSIVE (FOR MOBILE)
+Memastikan tampilan tetap bagus di layar HP.
+================================================================
+*/
+@media (max-width: 1200px) {
+    .hero-center-layout { grid-template-columns: 1fr; gap: 60px; padding: 0 20px; }
+    .side-content.left, .side-content.right { text-align: center; }
+    .hero-png-clean { width: 320px; }
+    .side-name, .side-headline { font-size: 2.8rem; }
+    .about-grid { flex-direction: column !important; }
+}
