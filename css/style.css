@@ -136,14 +136,22 @@ body {
     gap: 30px;
 }
 
-.side-content.left { text-align: left; }
-.side-content.right { text-align: right; }
+.side-content.left { 
+    text-align: left; 
+}
+
+.side-content.right { 
+    text-align: right; 
+    /* Memaksa teks kanan jadi 2 baris dengan membatasi lebar kotaknya */
+    max-width: 350px; 
+    justify-self: end;
+}
 
 .side-name, .side-headline { 
     font-size: 3.5rem; 
     line-height: 1.1; 
     font-weight: 800; 
-    white-space: nowrap; /* Desktop paksa satu baris */
+    white-space: normal; /* Biar bisa turun baris (wrap) */
 }
 
 .hero-png-clean {
@@ -222,14 +230,14 @@ body {
 .project-card:hover .project-thumbnail img { transform: scale(1.05); }
 
 /* ================================================================
-8. RESPONSIVE (MOBILE & TABLET)
+8. RESPONSIVE (FOR MOBILE & TABLET)
 ================================================================
 */
 @media (max-width: 1200px) {
     .hero-center-layout { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
-    .side-content.left, .side-content.right { text-align: center; }
+    .side-content.left, .side-content.right { text-align: center; max-width: 100%; }
     .hero-png-clean { width: 300px; }
-    .side-name, .side-headline { font-size: 2.8rem; white-space: normal; } /* Boleh turun baris di tablet */
+    .side-name, .side-headline { font-size: 2.8rem; }
     .about-grid { flex-direction: column !important; }
 }
 
@@ -242,7 +250,6 @@ body {
     .side-name, .side-headline {
         font-size: 2.2rem !important; 
         text-align: center;
-        white-space: normal !important; /* Di HP paksa turun baris agar muat */
         line-height: 1.2;
     }
 
