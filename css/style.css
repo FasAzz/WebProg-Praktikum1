@@ -41,16 +41,16 @@ body {
 
 /* ================================================================
 2. GLOBAL COMPONENTS (NAVBAR & BUTTONS)
-Berlaku di semua halaman (Home, About, Projects, dll).
+Update: Ditambahkan flex-wrap agar tidak kepotong di HP.
 ================================================================
 */
 .navbar {
     position: fixed;
     top: 0; 
     width: 100%;
-    padding: 30px 0;
+    padding: 20px 0; /* Padding diperkecil agar lebih slim */
     z-index: 1000;
-    background: rgba(11, 12, 16, 0.7);
+    background: rgba(11, 12, 16, 0.85); /* Lebih gelap sedikit agar kontras */
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -59,11 +59,12 @@ Berlaku di semua halaman (Home, About, Projects, dll).
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* Agar elemen bisa turun ke bawah jika tidak muat */
 }
 
 .logo { font-weight: 800; letter-spacing: 2px; font-size: 1.2rem; }
 
-.nav-links { display: flex; list-style: none; gap: 40px; }
+.nav-links { display: flex; list-style: none; gap: 30px; }
 
 .nav-links a {
     text-decoration: none;
@@ -93,7 +94,6 @@ Berlaku di semua halaman (Home, About, Projects, dll).
 
 /* ================================================================
 3. CARD SYSTEM & HOVER EFFECT (LIGHTROOM STYLE)
-Ini yang bikin kartu kamu ada border biru nyala pas di-hover.
 ================================================================
 */
 .glass-card, .skill-card {
@@ -117,7 +117,6 @@ Ini yang bikin kartu kamu ada border biru nyala pas di-hover.
 
 /* ================================================================
 4. HOME PAGE (index.html)
-Mengatur layout 3 kolom (Nama - Foto - Headline).
 ================================================================
 */
 .hero {
@@ -158,7 +157,6 @@ Mengatur layout 3 kolom (Nama - Foto - Headline).
 
 /* ================================================================
 5. ABOUT PAGE (about.html)
-Mengatur layout kartu yang berjejer ke samping.
 ================================================================
 */
 .content-wrapper { padding: 180px 0 100px; min-height: 100vh; }
@@ -179,7 +177,6 @@ Mengatur layout kartu yang berjejer ke samping.
 
 /* ================================================================
 6. SKILLS PAGE (skill.html)
-Mengatur ikon tools dan workflow Design Thinking.
 ================================================================
 */
 .skills-grid-container {
@@ -203,7 +200,6 @@ Mengatur ikon tools dan workflow Design Thinking.
 
 /* ================================================================
 7. PROJECTS PAGE (projects.html)
-Mengatur galeri foto yang fleksibel (nge-fit).
 ================================================================
 */
 .projects-grid {
@@ -224,7 +220,7 @@ Mengatur galeri foto yang fleksibel (nge-fit).
 
 /* ================================================================
 8. RESPONSIVE (FOR MOBILE)
-Memastikan tampilan tetap bagus di layar HP.
+Update: Dioptimalkan khusus untuk layar HP agar Navbar tidak pecah.
 ================================================================
 */
 @media (max-width: 1200px) {
@@ -233,4 +229,34 @@ Memastikan tampilan tetap bagus di layar HP.
     .hero-png-clean { width: 320px; }
     .side-name, .side-headline { font-size: 2.8rem; }
     .about-grid { flex-direction: column !important; }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 0;
+    }
+
+    .nav-flex {
+        flex-direction: column; /* Logo di atas, link di bawah */
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 0.8rem;
+    }
+
+    .content-wrapper {
+        padding-top: 150px; /* Tambah jarak atas agar tidak ketutup navbar yang meninggi */
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
 }
