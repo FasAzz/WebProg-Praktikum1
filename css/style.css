@@ -1,6 +1,5 @@
 /* ================================================================
 1. MASTER VARIABLES & RESET
-Bagian ini mengatur warna, font, dan dasar tampilan web.
 ================================================================
 */
 :root {
@@ -41,16 +40,15 @@ body {
 
 /* ================================================================
 2. GLOBAL COMPONENTS (NAVBAR & BUTTONS)
-Update: Ditambahkan flex-wrap agar tidak kepotong di HP.
 ================================================================
 */
 .navbar {
     position: fixed;
     top: 0; 
     width: 100%;
-    padding: 20px 0; /* Padding diperkecil agar lebih slim */
+    padding: 20px 0;
     z-index: 1000;
-    background: rgba(11, 12, 16, 0.85); /* Lebih gelap sedikit agar kontras */
+    background: rgba(11, 12, 16, 0.85);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -59,7 +57,7 @@ Update: Ditambahkan flex-wrap agar tidak kepotong di HP.
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Agar elemen bisa turun ke bawah jika tidak muat */
+    flex-wrap: wrap;
 }
 
 .logo { font-weight: 800; letter-spacing: 2px; font-size: 1.2rem; }
@@ -141,7 +139,7 @@ Update: Ditambahkan flex-wrap agar tidak kepotong di HP.
 .side-content.left { text-align: left; }
 .side-content.right { text-align: right; }
 
-.side-name, .side-headline { font-size: 3.8rem; line-height: 1; font-weight: 800; }
+.side-name, .side-headline { font-size: 3.8rem; line-height: 1; font-weight: 800; white-space: nowrap; }
 
 .hero-png-clean {
     width: 100%;
@@ -219,44 +217,53 @@ Update: Ditambahkan flex-wrap agar tidak kepotong di HP.
 .project-card:hover .project-thumbnail img { transform: scale(1.05); }
 
 /* ================================================================
-8. RESPONSIVE (FOR MOBILE)
-Update: Dioptimalkan khusus untuk layar HP agar Navbar tidak pecah.
+8. RESPONSIVE (MOBILE & TABLET FIX)
 ================================================================
 */
 @media (max-width: 1200px) {
     .hero-center-layout { grid-template-columns: 1fr; gap: 60px; padding: 0 20px; }
     .side-content.left, .side-content.right { text-align: center; }
     .hero-png-clean { width: 320px; }
-    .side-name, .side-headline { font-size: 2.8rem; }
+    .side-name, .side-headline { font-size: 2.8rem; white-space: normal; }
     .about-grid { flex-direction: column !important; }
 }
 
 @media (max-width: 768px) {
-    .navbar {
-        padding: 15px 0;
-    }
+    .navbar { padding: 10px 0; }
 
     .nav-flex {
-        flex-direction: column; /* Logo di atas, link di bawah */
-        gap: 15px;
+        flex-direction: column;
+        gap: 10px;
         justify-content: center;
     }
 
     .nav-links {
-        gap: 15px;
+        gap: 12px;
         flex-wrap: wrap;
         justify-content: center;
     }
 
-    .nav-links a {
-        font-size: 0.8rem;
+    .nav-links a { font-size: 0.75rem; }
+
+    /* Perbaikan Teks Nama & Headline di HP */
+    .side-name, .side-headline {
+        font-size: 2.2rem !important; /* Dikecilkan agar muat */
+        text-align: center;
+        white-space: normal !important; /* Agar teks turun ke bawah jika panjang */
+        line-height: 1.2;
     }
 
-    .content-wrapper {
-        padding-top: 150px; /* Tambah jarak atas agar tidak ketutup navbar yang meninggi */
+    .hero-center-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        padding: 0 15px;
     }
+
+    .hero-png-clean { width: 260px; }
+
+    .content-wrapper { padding-top: 160px; }
     
-    .container {
-        padding: 0 20px;
-    }
+    .container { padding: 0 20px; }
 }
