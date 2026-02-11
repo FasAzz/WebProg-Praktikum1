@@ -115,7 +115,6 @@ body {
 
 /* ================================================================
 4. HOME PAGE (index.html)
-Update: Fix Layout Desktop agar teks tidak balapan ke pinggir.
 ================================================================
 */
 .hero {
@@ -132,31 +131,19 @@ Update: Fix Layout Desktop agar teks tidak balapan ke pinggir.
     grid-template-columns: 1fr 450px 1fr;
     align-items: center;
     width: 100%;
-    max-width: 1400px; /* Dipersempit dikit biar teks gak terlalu ke pinggir */
+    max-width: 1500px;
     padding: 0 40px;
-    gap: 20px;
+    gap: 30px;
 }
 
-.side-content {
-    width: 100%;
-    max-width: 400px; /* Batas lebar teks agar turun baris */
-}
-
-.side-content.left { 
-    text-align: left; 
-    justify-self: start;
-}
-
-.side-content.right { 
-    text-align: right; 
-    justify-self: end;
-}
+.side-content.left { text-align: left; }
+.side-content.right { text-align: right; }
 
 .side-name, .side-headline { 
-    font-size: 3.2rem; /* Ukuran font lebih proporsional */
+    font-size: 3.5rem; 
     line-height: 1.1; 
     font-weight: 800; 
-    white-space: normal; /* Mengizinkan wrap */
+    white-space: nowrap; /* Desktop paksa satu baris */
 }
 
 .hero-png-clean {
@@ -235,15 +222,14 @@ Update: Fix Layout Desktop agar teks tidak balapan ke pinggir.
 .project-card:hover .project-thumbnail img { transform: scale(1.05); }
 
 /* ================================================================
-8. RESPONSIVE (FOR MOBILE & TABLET)
+8. RESPONSIVE (MOBILE & TABLET)
 ================================================================
 */
 @media (max-width: 1200px) {
     .hero-center-layout { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
-    .side-content { max-width: 100%; }
     .side-content.left, .side-content.right { text-align: center; }
     .hero-png-clean { width: 300px; }
-    .side-name, .side-headline { font-size: 2.8rem; }
+    .side-name, .side-headline { font-size: 2.8rem; white-space: normal; } /* Boleh turun baris di tablet */
     .about-grid { flex-direction: column !important; }
 }
 
@@ -256,6 +242,7 @@ Update: Fix Layout Desktop agar teks tidak balapan ke pinggir.
     .side-name, .side-headline {
         font-size: 2.2rem !important; 
         text-align: center;
+        white-space: normal !important; /* Di HP paksa turun baris agar muat */
         line-height: 1.2;
     }
 
@@ -266,7 +253,6 @@ Update: Fix Layout Desktop agar teks tidak balapan ke pinggir.
         gap: 25px;
     }
 
-    .hero-png-clean { width: 240px; }
+    .hero-png-clean { width: 250px; }
     .content-wrapper { padding-top: 160px; }
-    .container { padding: 0 20px; }
 }
